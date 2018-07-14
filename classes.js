@@ -63,28 +63,19 @@ class Employee {
 
 //Code Here
 
-class Manager {
-  constructor(first_name,last_name,email,age,reports) {
-    this.first_name = first_name;
-    this.last_name = last_name;
-    this.email = email;
-    this.age = age;
-    this.reports = []
+class Manager extends Employee{
+  constructor(first_name,last_name,email,age) {
+    super(first_name,last_name,email,age)
+    this.reports = [];
   }
-  reports(Employee){
-    this.report.push(Employee)
-  }
-  hire(Employee){
-    
-  }
-  fire(Employee){
-    
+
+ hire(Employee)  {
+    this.reports.push(Employee)
+
+} fire(index) {
+  this.reports.splice(index,1)
   }
 }
-
-
-
-
 
 ////////// PROBLEM 3 //////////
 
@@ -110,7 +101,36 @@ class Manager {
 
 //Code Here
 
+class ProgressiveManager extends Manager {
+  constructor(first_name,last_name,email,age){
+    super(first_name,last_name,email,age)
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
 
+  hire() {
+    this.reports.push(Employee)
+      if (this.reports.length === 0){
+      this.title = 'Not a Manager'
+      } else if (this.reports.length >=1 && this.reports.length <= 3){
+        this.title = 'Barely Manager'
+      } else if (this.reports.length >= 4 && this.reports.length <=10) {
+        this.title = 'Mostly Manager'
+      } else if (this.reports.length >= 11 && this.reports.length <= 50){
+        this.title = 'Manager'
+      } else if (this.reports.length >= 51 && this.reports.length <= 100){
+        this.title = 'Manager Plus'
+      } else if (this.reports.length >= 101){
+        this.title = 'Bestest Manager'
+      }
+    }
+fire(index){
+  this.reports.splice(index,1)
+  return this.bonus += 100;
+}
+  }
+  
+ 
 
 ////////// PROBLEM 4 - Black Diamond //////////
 
@@ -137,4 +157,45 @@ class Manager {
 
 //Code Here
 
+class Machine {
+  constructor() {
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+  makeWidgets(num){
+    var increment = 0
+    this.widgets_made_count += num;
+    increment = Math.trunc(num / 50) 
+      return this.wear_and_tear_count+=increment;
+    
+    
+  }
+  fixMachine() {
+    this.needs_reboot = true;
+    
+  }
+  reboot() {
+    return () => {
+    this.wear_and_tear_count-=10
+    return this.needs_reboot = false
+    }
+    }
+  }
 
+
+
+// class Machine {
+//   constructor() {
+//     this.widgets_made_count = 0;
+//     this.wear_and_tear_count = 0;
+//     this.needs_reboot = false;
+//   }
+//   makeWidgets(num){
+//     this.widgets_made_count += num;
+   
+//   }
+//   fixMachine(){
+//     this.needs_reboot =
+//   }
+ 
